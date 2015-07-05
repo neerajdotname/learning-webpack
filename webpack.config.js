@@ -7,14 +7,15 @@ var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
   entry: [path.resolve(ROOT_PATH, 'app/main')],
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   output: {
     path: path.resolve(ROOT_PATH, 'build'),
     filename: 'bundle.js',
   },
   plugins: [
-     new HtmlWebpackPlugin({
-      title: 'Todo app',
-    }),
+     new HtmlWebpackPlugin({ title: 'Todo app', }),
   ],
   module: {
     loaders: [
@@ -22,6 +23,11 @@ var common = {
         test: /\.css$/,
         loaders: ['style', 'css'],
       },
+      {
+        test: /\.jsx?$/,
+        loader: 'babel?stage=1',
+        include: path.resolve(ROOT_PATH, 'app'),
+      }
     ],
   },
 };
@@ -35,6 +41,14 @@ if (TARGET === 'dev') {
     entry: [
       'webpack-dev-server/client?http://0.0.0.0:8080',
       'webpack/hot/dev-server'
-    ]
+    ],
+    module: {
+      loaders: [ {
+          test: /\.jsx?$/,
+          loaders: ['react-hot', 'babel?stage=1'],
+          include: path.resolve(ROOT_PATH, 'app'),
+        },
+      ],
+    },
   });
 }
