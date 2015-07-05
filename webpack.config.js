@@ -2,8 +2,10 @@ var path = require('path');
 var merge = require('webpack-merge');
 var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
-var common={
-entry: [path.resolve(ROOT_PATH, 'app/main')], output: {
+
+var common = {
+  entry: [path.resolve(ROOT_PATH, 'app/main')],
+  output: {
     path: path.resolve(ROOT_PATH, 'build'),
     filename: 'bundle.js',
   },
@@ -12,15 +14,20 @@ entry: [path.resolve(ROOT_PATH, 'app/main')], output: {
       {
         test: /\.css$/,
         loaders: ['style', 'css'],
-}, ],
-}, };
+      },
+    ],
+  },
+};
 
-if(TARGET === 'build') { module.exports = common;
+if (TARGET === 'build') {
+  module.exports = common;
 }
 
-if(TARGET === 'dev') { module.exports = merge(common, {
+if (TARGET === 'dev') {
+  module.exports = merge(common, {
     entry: [
       'webpack-dev-server/client?http://0.0.0.0:8080',
       'webpack/hot/dev-server'
-] });
+    ]
+  });
 }
