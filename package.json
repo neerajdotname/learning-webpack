@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server --config webpack.development.js --devtool eval-source --progress --colors --hot --content-base build"
+    "build": "TAGET=build webpack",
+    "start": "TARGET=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "node-libs-browser": "^0.5.2",
     "style-loader": "^0.12.3",
     "webpack": "^1.10.1",
-    "webpack-dev-server": "^1.10.1"
+    "webpack-dev-server": "^1.10.1",
+    "webpack-merge": "^0.1.2"
   }
 }
