@@ -1,0 +1,20 @@
+{
+  "name": "learning-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server --config webpack.development.js --devtool eval-source --progress --colors --hot --content-base build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.15.1",
+    "node-libs-browser": "^0.5.2",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1"
+  }
+}
