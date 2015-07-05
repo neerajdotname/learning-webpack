@@ -1,5 +1,7 @@
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var merge = require('webpack-merge');
+
 var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
 
@@ -9,6 +11,11 @@ var common = {
     path: path.resolve(ROOT_PATH, 'build'),
     filename: 'bundle.js',
   },
+  plugins: [
+     new HtmlWebpackPlugin({
+      title: 'Todo app',
+    }),
+  ],
   module: {
     loaders: [
       {
